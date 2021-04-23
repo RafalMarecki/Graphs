@@ -1,6 +1,4 @@
 #pragma once
-#ifndef EDGE_HH
-#define EDGE_HH
 
 
 class Edge
@@ -52,7 +50,7 @@ public:
 
 
 
-#endif
+
 
 
 

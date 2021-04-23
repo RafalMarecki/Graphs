@@ -2,6 +2,24 @@
 #include <iostream>
 
 
+
+
+
+void List::DeleteList()
+{
+	Edge* tmp = head;
+
+	while (tmp)
+		{
+			Edge* next_edge = tmp->get_NextEdge();
+			delete tmp;
+			tmp = next_edge;
+		}
+}
+
+
+
+
 void List::AddEdge(const int& StartVertice, const int& EndVertice, const int& weigth)
 {
 	Edge* new_edge = new Edge;
@@ -31,13 +49,12 @@ void List::DisplayList()
 	{
 	Edge* tmp = head;
 
-	while (tmp->get_NextEdge() != nullptr)
+	while (tmp)
 		{
-			std::cout << tmp->get_StartVertice() << "->" << "Weight: " << tmp->get_Weight() << "->" << tmp->get_EndVertice() << std::endl;
+			std::cout << tmp->get_StartVertice() << "->" << "Weight:" << tmp->get_Weight() << "->" << tmp->get_EndVertice() << std::endl;
 			tmp = tmp->get_NextEdge();
 		}
 
-	std::cout << tmp->get_StartVertice() << "->" << "Weight: " << tmp->get_Weight() << "->" << tmp->get_EndVertice() <<  std::endl;
 	}
 
 

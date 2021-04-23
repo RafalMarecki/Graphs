@@ -1,6 +1,5 @@
 #pragma once
-#ifndef LIST_HH
-#define LIST_HH
+
 #include "Edge.h"
 
 
@@ -14,7 +13,7 @@ private:
 
 public:
 
-	~List() {};
+	void DeleteList();
 
 	List() : ListSize(0), head(nullptr) {};
 
@@ -53,13 +52,3 @@ public:
 
 
 
-
-
-
-
-
-
-
-
-
-#endif
