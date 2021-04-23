@@ -1,6 +1,5 @@
 #pragma once
 
-
 class Graph
 {
 protected:
@@ -22,7 +21,9 @@ public:
 
 	virtual void DisplayGraph() = 0;
 
-	virtual void Get_Random_Graph() = 0;
+	virtual void Get_Random_Directed_Graph() = 0;
+
+	virtual void Get_Random_Undirected_Graph() = 0;
 
 
 };

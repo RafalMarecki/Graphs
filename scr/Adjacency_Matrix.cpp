@@ -4,8 +4,47 @@
 
 
 
+void A_Matrix::Get_Random_Undirected_Graph()
+{
 
- void A_Matrix::Get_Random_Graph()
+	int Size = get_Vertices();
+
+	float Density = get_Density();
+
+	int Edges = (Density * Size * (Size - 1)) / 2;
+
+
+	for (int j = 0; j < Size; j++)
+	{
+		for (int i = 0; i < Size; i++)
+		{
+			_adj_matrix[j][i] = -100;
+		}
+	}
+
+
+	srand(time(NULL));
+	for (int i = 0; i < Edges; i++)
+	{
+		int StartVer_tmp = std::rand() % Size;
+		int EndVer_tmp = std::rand() % Size;
+		int Weigth_tmp = std::rand() % 100 - 50;
+
+		
+			if (_adj_matrix[StartVer_tmp][EndVer_tmp] == -100 && _adj_matrix[EndVer_tmp][StartVer_tmp] == -100 && StartVer_tmp != EndVer_tmp)
+				{
+					_adj_matrix[StartVer_tmp][EndVer_tmp] = Weigth_tmp;
+					_adj_matrix[EndVer_tmp][StartVer_tmp] = Weigth_tmp;
+				}
+			else
+				i--;
+	}
+ }
+
+
+
+
+ void A_Matrix::Get_Random_Directed_Graph()
 {
 	 int Size = get_Vertices();
 
@@ -45,9 +84,6 @@
 			std::cout << Vertice << "->" << "Weight:" << _adj_matrix[Vertice][i] << "->" << i << std::endl;
 		}
  }
-
-
-
 
 
  void A_Matrix::DisplayGraph()

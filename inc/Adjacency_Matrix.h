@@ -12,7 +12,6 @@ private:
 	int** _adj_matrix;
 public:
 
-
 	A_Matrix(const int& Vertices, const float& Density) : Graph(Vertices, Density)
 	{
 		_adj_matrix = new int* [Vertices];
@@ -26,8 +25,9 @@ public:
 
 	virtual void DisplayGraph() override;
 
-	virtual void Get_Random_Graph() override;
+	virtual void Get_Random_Directed_Graph() override;
 
+	virtual void Get_Random_Undirected_Graph() override;
 
 };
 

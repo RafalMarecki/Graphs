@@ -1,4 +1,5 @@
 #include "List.h"
+
 #include <iostream>
 
 
@@ -7,52 +8,44 @@
 
 void List::DeleteList()
 {
-	Edge* tmp = head;
+	Vertice* tmp = head;
 
 	while (tmp)
 		{
-			Edge* next_edge = tmp->get_NextEdge();
+		Vertice* next_vertice = tmp->get_NextVertice();
 			delete tmp;
-			tmp = next_edge;
+			tmp = next_vertice;
 		}
 }
 
-
-
-
-void List::AddEdge(const int& StartVertice, const int& EndVertice, const int& weigth)
+void List::AddVertice(const int& EndVertice, const int& weigth)
 {
-	Edge* new_edge = new Edge;
+	Vertice* new_vertice = new Vertice;
 
-	new_edge->set_EdgeValues(StartVertice, EndVertice, weigth);
+	new_vertice->set_VerticeValues(EndVertice, weigth);
 
 	if (head == nullptr)
 		{
-			head = new_edge;
+			head = new_vertice;
 		}
 
 	else
 		{
-			Edge* tmp = head;
-			head = new_edge;
-			new_edge->set_NextEdge(tmp);
+			Vertice* tmp = head;
+			head = new_vertice;
+			new_vertice->set_NextVertice(tmp);
 		}
 
 	ListSize++;
 }
 
-
-void List::RemoveEdge(const int& StartVertice, const int& EndVertice) {}
-
-
-void List::DisplayList()
+void List::DisplayList(int num)
 	{
-	Edge* tmp = head;
-
+	Vertice* tmp = head;
 	while (tmp)
 		{
-			std::cout << tmp->get_StartVertice() << "->" << "Weight:" << tmp->get_Weight() << "->" << tmp->get_EndVertice() << std::endl;
-			tmp = tmp->get_NextEdge();
+			std::cout << num << "->" << "Weight:" << tmp->get_Weight() << "->" << tmp->get_EndVertice() << std::endl;
+			tmp = tmp->get_NextVertice();
 		}
 
 	}
