@@ -111,7 +111,7 @@
 			 else
 				 std::cout << std::endl << "Last Edge: " << std::endl;
 
-			 _adj_List[i].DisplayList(i);
+			 _adj_List[i].DisplayVertList(i);
 		 }
 
 	 }

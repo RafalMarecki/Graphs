@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Graph.h"
-
+#include "Edge_List.h"
 
 
 
@@ -12,14 +12,8 @@ private:
 	int** _adj_matrix;
 public:
 
-	A_Matrix(const int& Vertices, const float& Density) : Graph(Vertices, Density)
-	{
-		_adj_matrix = new int* [Vertices];
-		for (int i = 0; i < Vertices; i++)
-		{
-			_adj_matrix[i] = new int[Vertices];
-		}
-	};
+	A_Matrix(const int& Vertices, const float& Density);
+	
 
 	void DisplayRow(const int& Vertice);
 
@@ -28,6 +22,10 @@ public:
 	virtual void Get_Random_Directed_Graph() override;
 
 	virtual void Get_Random_Undirected_Graph() override;
+
+	virtual void Prim_Algoritm() override;
+
+
 
 };
 
