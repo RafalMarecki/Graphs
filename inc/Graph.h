@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+
 
 class Graph
 {
@@ -25,7 +27,7 @@ public:
 
 	virtual void Get_Random_Undirected_Graph() = 0;
 
-	virtual void Prim_Algoritm() = 0;
+	
 
 
 };

@@ -21,7 +21,7 @@ public:
 
 	virtual void Get_Random_Undirected_Graph() override;
 
-	virtual void Prim_Algoritm() override{};
+	void Prim_Algoritm() {};
 
 
 

@@ -45,8 +45,6 @@
 				}
 			}
 
-
-
 		 srand(time(NULL));
 		 for (int i = 0; i < Edges; i++)
 		 {

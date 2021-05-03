@@ -21,6 +21,13 @@ public:
 
 	void AddEdge(const int& StartVertice, const int& EndVertice, const int& weigth);
 
+	void DeleteEdge();
+
+	void Add_Edge_by_Priority(const int& StartVertice, const int& EndVertice, const int& weigth);
+
+
+
+
 	void Delete_Minimal_Weight_Edge(int min_weight);
 
 	int Find_Minimal_Weight();
