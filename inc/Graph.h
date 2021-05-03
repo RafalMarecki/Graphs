@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
-
+#include <cstdlib>
+#include <fstream>
+#include <string>
 
 class Graph
 {
@@ -27,7 +29,7 @@ public:
 
 	virtual void Get_Random_Undirected_Graph() = 0;
 
-	
+	virtual int Read_Graph_From_File(std::string FileName) = 0;
 
 
 };

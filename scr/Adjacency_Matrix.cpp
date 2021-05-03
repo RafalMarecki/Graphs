@@ -19,10 +19,8 @@ A_Matrix::A_Matrix(const int& Vertices, const float& Density): Graph(Vertices, D
 			_adj_matrix[j][i] = HIGH;
 		}
 	}
-
-
-
 };
+
 
 
 void A_Matrix::Get_Random_Undirected_Graph()
@@ -188,6 +186,56 @@ void A_Matrix::Get_Random_Undirected_Graph()
 
 		 }
  }
+
+
+ int A_Matrix::Read_Graph_From_File(std::string FileName)
+ {
+	 int start_dij;
+	 int start_ver, end_ver, weight;
+	 int edges;
+
+	 std::fstream file;
+	 file.open(FileName, std::ios::in);
+
+	 if (file.good())
+	 {
+		 file >> edges >> _Vertices >> start_dij;
+
+		 _adj_matrix = new int* [_Vertices];
+		 for (int i = 0; i < _Vertices; i++)
+		 {
+			 _adj_matrix[i]= new int[_Vertices];
+		 }
+
+		 while (!file.fail())
+		 {
+			 file >> start_ver >> end_ver >> weight;
+			 _adj_matrix[start_ver][end_ver] = weight;
+		 }
+	 }
+	 file.close();
+
+	 return 0;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -23,7 +23,7 @@ public:
 
 	void Prim_Algoritm() {};
 
-
+	virtual int Read_Graph_From_File(std::string FileName) override { return 0; };
 
 };
 
