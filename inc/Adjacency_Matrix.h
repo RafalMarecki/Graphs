@@ -29,20 +29,15 @@ public:
 
 	virtual void DisplayGraph() override;
 
-	virtual void Get_Random_Directed_Graph() override;
-
 	virtual void Get_Random_Undirected_Graph() override;
 
 	virtual int Read_Graph_From_File(std::string FileName) override;
 
-	int getNearest(int* tmp_dist, bool* visited);
-
-	void DijkstraAlgoritm(int Vertice, bool ifPrint);
+	virtual void DijkstraAlgoritm(int Vertice, bool ifPrint) override;
 
 	void DisplayShortestPaths(int* tmp_dist, int* parent);
 
-
-	//A_Matrix Prim_Algoritm(A_Matrix& MSTree);
+	int getNearest(int* tmp_dist, bool* visited);
 
 };
 

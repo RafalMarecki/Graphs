@@ -10,15 +10,33 @@
 
 int main()
 {
-	clock_t start, stop;
-	long double czas;
+	clock_t start, stop, start1, stop1;
+	long double czas, czas1;
 
 	int num, num1;
-	A_Matrix file_matrix;
+	//A_Matrix file_matrix;
+	A_List list(400, 1.0f);
 
-	file_matrix.Read_Graph_From_File("graph_data.txt");
-	file_matrix.DisplayGraph();
-	
+	//file_matrix.Read_Graph_From_File("graph_data.txt");
+	//file_matrix.DisplayGraph();
+	list.Get_Random_Undirected_Graph();
+	//list.DisplayGraph();
+	std::cout << std::endl;
+
+	start = clock();
+	list.DijkstraAlgoritm(0,false);
+	stop = clock();
+	czas = (double)(stop - start) / CLOCKS_PER_SEC;
+	std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+
+	A_Matrix file_matrix(100,1.0f);
+	file_matrix.Get_Random_Undirected_Graph();
+
+	start1 = clock();
+	file_matrix.DijkstraAlgoritm(0,false);
+	stop1 = clock();
+	czas1 = (double)(stop1 - start1) / CLOCKS_PER_SEC;
+	std::cout << "Czas operacji: " << czas1 << std::endl << std::endl;
 
 
 

@@ -3,6 +3,9 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <ctime>
+constexpr auto HIGH = 999999;
+
 
 class Graph
 {
@@ -25,11 +28,12 @@ public:
 
 	virtual void DisplayGraph() = 0;
 
-	virtual void Get_Random_Directed_Graph() = 0;
-
 	virtual void Get_Random_Undirected_Graph() = 0;
 
+	virtual void DijkstraAlgoritm(int Vertice, bool ifPrint) = 0;
+
 	virtual int Read_Graph_From_File(std::string FileName) = 0;
+
 
 
 };

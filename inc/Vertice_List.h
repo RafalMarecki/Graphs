@@ -25,6 +25,9 @@ public:
 
 	void DisplayVertList(int num);
 
+	int operator[](int position);
+
+	void ChangeWeight(int EndVer, int weight);
 
 };
 

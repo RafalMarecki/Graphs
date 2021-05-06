@@ -13,17 +13,21 @@ public:
 
 	~A_List() {};
 
-	A_List(const int& Vertices, const float& Density) : Graph(Vertices, Density) { _adj_List = new Ver_List[Vertices]; };
+	A_List(const int& Vertices, const float& Density);
 
 	virtual void DisplayGraph() override;
 
-	virtual void Get_Random_Directed_Graph() override;
-
 	virtual void Get_Random_Undirected_Graph() override;
 
-	void Prim_Algoritm() {};
-
 	virtual int Read_Graph_From_File(std::string FileName) override { return 0; };
+
+	virtual void DijkstraAlgoritm(int Vertice, bool ifPrint) override;
+
+	void DisplayShortestPaths(int* tmp_dist, int* parent);
+
+	int getNearest(int* tmp_dist, bool* visited);
+
+	void DisplaySingleList(const int& Vertice);
 
 };
 

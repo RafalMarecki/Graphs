@@ -1,6 +1,6 @@
 #include "Adjacency_Matrix.h"
-#include <iostream>
-constexpr auto HIGH = 999999;
+
+
 
 
 A_Matrix::A_Matrix(const int& Vertices, const float& Density): Graph(Vertices, Density)
@@ -15,9 +15,7 @@ A_Matrix::A_Matrix(const int& Vertices, const float& Density): Graph(Vertices, D
 	for (int j = 0; j < Vertices; j++)
 	{
 		for (int i = 0; i < Vertices; i++)
-		{
 			_adj_matrix[j][i] = HIGH;
-		}
 	}
 };
 
@@ -49,28 +47,6 @@ void A_Matrix::Get_Random_Undirected_Graph()
 				i--;
 	}
  }
-
-
- void A_Matrix::Get_Random_Directed_Graph()
-{
-	 int Size = get_Vertices();
-
-	 float Density = get_Density();
-
-	 int Edges = (Density * Size * (Size - 1)) / 2;
-
-
-	 srand(time(NULL));
-	 for (int i = 0; i < Edges; i++)
-		{
-			int StartVer_tmp = std::rand() % Size;
-			int EndVer_tmp = std::rand() % Size;
-			int Weigth_tmp = std::rand() % 10000 +1;
-			_adj_matrix[StartVer_tmp][EndVer_tmp] = Weigth_tmp;
-		}
-
-}
-
 
  int A_Matrix::getNearest(int* tmp_dist, bool* visited)
  {
@@ -135,6 +111,7 @@ void A_Matrix::Get_Random_Undirected_Graph()
 	 delete[] tmp_dist;
 	 delete[] parent;
  }
+
 
  void A_Matrix::DisplayShortestPaths(int* tmp_dist, int* parent)
  {
@@ -202,15 +179,24 @@ void A_Matrix::Get_Random_Undirected_Graph()
 		 file >> edges >> _Vertices >> start_dij;
 
 		 _adj_matrix = new int* [_Vertices];
+
 		 for (int i = 0; i < _Vertices; i++)
-		 {
 			 _adj_matrix[i]= new int[_Vertices];
+		 
+
+		 for (int j = 0; j < _Vertices; j++)
+		 {
+			 for (int i = 0; i < _Vertices; i++)
+				 _adj_matrix[j][i] = HIGH;
+			 
 		 }
+
 
 		 while (!file.fail())
 		 {
 			 file >> start_ver >> end_ver >> weight;
 			 _adj_matrix[start_ver][end_ver] = weight;
+			 _adj_matrix[end_ver][start_ver] = weight;
 		 }
 	 }
 	 file.close();
