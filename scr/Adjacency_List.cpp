@@ -77,7 +77,7 @@
 	 }
 
 
-	 void A_List::DijkstraAlgoritm(int Vertice, bool ifPrint)
+	 void A_List::DijkstraAlgoritm(std::string FileName,int Vertice, bool ifPrint, bool ifSave)
 	 {
 		 int Size = get_Vertices();
 
@@ -116,7 +116,8 @@
 
 		 if (ifPrint == true)
 			 DisplayShortestPaths(tmp_dist, parent);
-
+		 if(ifSave == true)
+			 save_dijskra_result_to_file(FileName, tmp_dist, parent);
 
 		 delete[] visited;
 		 delete[] tmp_dist;
@@ -176,14 +177,66 @@
 	
 
 
+	 int A_List::Read_Graph_From_File(std::string FileName)
+	 {
+		 int start_dij;
+		 int start_ver, end_ver, weight;
+		 int edges;
+
+		 std::fstream file;
+		 file.open(FileName, std::ios::in);
+
+		 if (file.good())
+		 {
+			 file >> edges >> _Vertices >> start_dij;
+
+		
+			 _adj_List = new Ver_List[_Vertices];
+
+			 for (int i = 0; i < _Vertices; i++)
+			 {
+				 for (int j = 0; j < _Vertices; j++)
+					 _adj_List[i].AddVertice(j, HIGH);
+			 }
+
+
+			 while (!file.fail())
+			 {
+				 file >> start_ver >> end_ver >> weight;
+				 _adj_List[start_ver].ChangeWeight(end_ver, weight);
+				 _adj_List[end_ver].ChangeWeight(start_ver, weight);
+			 }
+		 }
+		 file.close();
+
+		 return  start_dij;
+	 }
 
 
 
+	 void A_List::save_dijskra_result_to_file(std::string FileName, int* tmp_dist, int* parent)
+	 {
 
+		 int Size = get_Vertices();
 
+		 std::fstream file;
+		 file.open(FileName, std::ios::out);
 
-
-
+		 if (file.good())
+		 {
+			 for (int i = 0; i < Size; i++) {
+				 int temp = parent[i];
+				 file << i << " <- ";
+				 while (temp != -1)
+				 {
+					 file << temp << " <- ";
+					 temp = parent[temp];
+				 }
+				 file << "Distance: " << tmp_dist[i];
+				 file << std::endl;
+			 }
+			 file.close();
+		 }
 
 
 

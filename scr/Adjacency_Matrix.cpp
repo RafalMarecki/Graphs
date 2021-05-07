@@ -67,7 +67,7 @@ void A_Matrix::Get_Random_Undirected_Graph()
  }
 
 
- void A_Matrix::DijkstraAlgoritm(int Vertice, bool ifPrint)
+ void A_Matrix::DijkstraAlgoritm(std::string FileName,int Vertice, bool ifPrint, bool ifSave)
  {
 	 int Size = get_Vertices();
 
@@ -105,6 +105,8 @@ void A_Matrix::Get_Random_Undirected_Graph()
 	 }
 	 if(ifPrint == true)
 	 DisplayShortestPaths(tmp_dist, parent);
+	 if (ifSave == true)
+		 save_dijskra_result_to_file(FileName, tmp_dist, parent);
 
 
 	 delete[] visited;
@@ -201,90 +203,42 @@ void A_Matrix::Get_Random_Undirected_Graph()
 	 }
 	 file.close();
 
-	 return 0;
+	 return  start_dij;
  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- /*
- A_Matrix A_Matrix::Prim_Algoritm(A_Matrix& MSTree)
+void A_Matrix::save_dijskra_result_to_file(std::string FileName, int* tmp_dist, int* parent)
  {
-	 int Size = get_Vertices();
 
-	 float Density = get_Density();
+	int Size = get_Vertices();
 
-	 int Vertice = rand() % Size;
+	std::fstream file;
+	file.open(FileName, std::ios::out);
 
-	 Edge_Priority_Queue* edge_priority_queue = new Edge_Priority_Queue;
-
-	 bool** tmp_arr = new bool* [Size];
-	 for (int i = 0; i < Size; i++)
-		 tmp_arr[i] = new bool[Size];
-
-	 for (int i = 0; i < Size; i++)
-	 {
-		 for (int j = 0; j < Size; j++)
-			 tmp_arr[i][j] = false;
-	 }
-
-
-	 for (int j = 0; j < Size - 1; j++)
-	 {
-		 for (int i = 0; i < Size; i++)
-		 {
-			 if (_adj_matrix[Vertice][i] != -100 && tmp_arr[Vertice][i] == false && tmp_arr[i][Vertice] == false)
-			 {
-				 edge_priority_queue->Enqueue(Vertice, i, _adj_matrix[Vertice][i]);
-			 }
-		 }
+	if (file.good())
+	{ 
+		for (int i = 0; i < Size; i++) {
+			int temp = parent[i];
+			file << i << " <- ";
+			while (temp != -1)
+			{
+				file << temp << " <- ";
+				temp = parent[temp];
+			}
+			file << "Distance: " << tmp_dist[i];
+			file << std::endl;
+		}
+		file.close();
+	}
 
 
-		 int actual_begin = edge_priority_queue->get_begin_from_first();
-		 int actual_end = edge_priority_queue->get_end_from_first();
-		 int actual_weight = edge_priority_queue->get_weight_from_first();
-
-		 if (tmp_arr[actual_begin][actual_end] == false && tmp_arr[actual_end][actual_begin] == false)
-		 {
-			 MSTree.get_matrix()[actual_begin][actual_end] = actual_weight;
-			 MSTree.get_matrix()[actual_end][actual_begin] = actual_weight;
-			 tmp_arr[actual_begin][actual_end] = true;
-			 tmp_arr[actual_end][actual_begin] = true;
-			 edge_priority_queue->Dequeue();
-		 }
-		 else
-		 {
-			 edge_priority_queue->Dequeue();
-		 }
-
-		 std::cout << "First: " << actual_begin << "Weight: " << MSTree.get_matrix()[actual_begin][actual_end] << "End: " << actual_end;
 
 
-		 Vertice = actual_end;
 
-	 }
 
-	 return MSTree;
+
+
  }
- */
+
 
 
 

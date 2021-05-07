@@ -30,11 +30,11 @@ public:
 
 	virtual void Get_Random_Undirected_Graph() = 0;
 
-	virtual void DijkstraAlgoritm(int Vertice, bool ifPrint) = 0;
+	virtual void DijkstraAlgoritm(std::string FileName,int Vertice, bool ifPrint, bool ifSave) = 0;
 
 	virtual int Read_Graph_From_File(std::string FileName) = 0;
 
-
+	virtual void save_dijskra_result_to_file(std::string FileName, int* tmp_dist, int* parent) = 0;
 
 };
 
