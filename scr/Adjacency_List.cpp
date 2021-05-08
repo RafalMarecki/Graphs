@@ -2,17 +2,19 @@
 #include "Adjacency_List.h"
 
 
-//Nie dziala po indeksach
-	//Edge_List::~Edge_List()
-	//{
-	//	int Vertices = get_Vertices();
 
-	//	for (int i = 0; i < Vertices; i++)
-	//		_edge_List[Vertices].DeleteList();
+  A_List::~A_List()
+	{
+		int Vertices = get_Vertices();
+
+		for (int i = 0; i < Vertices; i++)
+			_adj_List[i].DeleteVertList();
+
+		_adj_List->DeleteVertList();
+	}
 
 
-	//	delete[] _edge_List;
-	//}
+
 	A_List::A_List(const int& Vertices, const float& Density) : Graph(Vertices, Density)
 	{
 
@@ -237,6 +239,7 @@
 			 }
 			 file.close();
 		 }
+	 }
 
 
 

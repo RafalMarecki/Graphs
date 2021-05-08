@@ -6,17 +6,18 @@
 #include <fstream>
 #include <string>
 
+
+
 int main()
 {
 	
 	clock_t start, stop, start1, stop1;
 	long double czas, czas1;
-	int num, num1;
+	int num, num1,num3;
 	int FirstVertice;
 
 	while (1)
 	{
-	
 		std::cout << std::endl;
 		std::cout << "Wybierz opcje: " << std::endl;
 		std::cout << "1. Wybierz prace na grafie na podstawie macierzy sasiedztwa" << std::endl;
@@ -47,7 +48,7 @@ int main()
 				break;
 				case 2:
 				{
-		
+
 					int num2;
 					std::cout << " Czy chcesz wyswietlic wynik? " << std::endl;
 					std::cout << std::endl;
@@ -59,21 +60,61 @@ int main()
 					{
 
 					case 1:
-						start = clock();
-						Graph_Matrix.DijkstraAlgoritm("graph_data.txt",FirstVertice, true, true);
-						stop = clock();
-						czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
-						std::cout << "Czas operacji: " << czas << std::endl << std::endl;
-						break;
-					case 2:
-						start = clock();
-						//Graph_Matrix.DijkstraAlgoritm(FirstVertice, false);
-						stop = clock();
-						czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
-						std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+					{
+						std::cout << " Czy chcesz zapisac wynik do pliku? " << std::endl;
+						std::cout << std::endl;
+						std::cout << "Wybierz opcje: " << std::endl;
+						std::cout << "1. Tak" << std::endl;
+						std::cout << "2. Nie" << std::endl;
+						std::cin >> num3;
+						switch (num3)
+						{
+						case 1:
+							start = clock();
+							Graph_Matrix.DijkstraAlgoritm("graph_data.txt", FirstVertice, true, true);
+							stop = clock();
+							czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+							std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+							break;
+						case 2:
+							start = clock();
+							Graph_Matrix.DijkstraAlgoritm("graph_data.txt", FirstVertice, true, false);
+							stop = clock();
+							czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+							std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+							break;
+
+						}
 						break;
 					}
+					case 2:
+					{
+						std::cout << " Czy chcesz zapisac wynik do pliku? " << std::endl;
+						std::cout << std::endl;
+						std::cout << "Wybierz opcje: " << std::endl;
+						std::cout << "1. Tak" << std::endl;
+						std::cout << "2. Nie" << std::endl;
+						std::cin >> num3;
+						switch (num3)
+						{
+						case 1:
+							start = clock();
+							Graph_Matrix.DijkstraAlgoritm("graph_data.txt", FirstVertice, false, true);
+							stop = clock();
+							czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+							std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+							break;
+						case 2:
+							start = clock();
+							Graph_Matrix.DijkstraAlgoritm("graph_data.txt", FirstVertice, false, false);
+							stop = clock();
+							czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+							std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+							break;
 
+						}
+					}
+					}
 				}
 				break;
 				case 3:
@@ -95,6 +136,7 @@ int main()
 			A_List Graph_List;
 			while (1)
 			{
+
 				std::cout << std::endl;
 				std::cout << "Wybierz opcje: " << std::endl;
 				std::cout << "1. Wczytaj z pliku dane do grafu" << std::endl;
@@ -108,19 +150,80 @@ int main()
 				case 1:
 				{
 					FirstVertice = Graph_List.Read_Graph_From_File("graph_data2.txt");
+
 				}
 				break;
 				case 2:
 				{
-					start = clock();
-					//Graph_List.DijkstraAlgoritm(FirstVertice, true);
-					stop = clock();
-					czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
-					std::cout << "Czas operacji: " << czas << std::endl << std::endl;
 
+					int num2;
+					std::cout << " Czy chcesz wyswietlic wynik? " << std::endl;
+					std::cout << std::endl;
+					std::cout << "Wybierz opcje: " << std::endl;
+					std::cout << "1. Tak" << std::endl;
+					std::cout << "2. Nie" << std::endl;
+					std::cin >> num2;
+					switch (num2)
+					{
+
+					case 1:
+					{
+						std::cout << " Czy chcesz zapisac wynik do pliku? " << std::endl;
+						std::cout << std::endl;
+						std::cout << "Wybierz opcje: " << std::endl;
+						std::cout << "1. Tak" << std::endl;
+						std::cout << "2. Nie" << std::endl;
+						std::cin >> num3;
+						switch (num3)
+						{
+						case 1:
+							start = clock();
+							Graph_List.DijkstraAlgoritm("graph_data.txt", FirstVertice, true, true);
+							stop = clock();
+							czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+							std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+							break;
+						case 2:
+							start = clock();
+							Graph_List.DijkstraAlgoritm("graph_data.txt", FirstVertice, true, false);
+							stop = clock();
+							czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+							std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+							break;
+
+						}
+						break;
+					}
+					case 2:
+					{
+						std::cout << " Czy chcesz zapisac wynik do pliku? " << std::endl;
+						std::cout << std::endl;
+						std::cout << "Wybierz opcje: " << std::endl;
+						std::cout << "1. Tak" << std::endl;
+						std::cout << "2. Nie" << std::endl;
+						std::cin >> num3;
+						switch (num3)
+						{
+						case 1:
+							start = clock();
+							Graph_List.DijkstraAlgoritm("graph_data.txt", FirstVertice, false, true);
+							stop = clock();
+							czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+							std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+							break;
+						case 2:
+							start = clock();
+							Graph_List.DijkstraAlgoritm("graph_data.txt", FirstVertice, false, false);
+							stop = clock();
+							czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+							std::cout << "Czas operacji: " << czas << std::endl << std::endl;
+							break;
+
+						}
+					}
+					}
 				}
 				break;
-
 				case 3:
 				{
 					Graph_List.DisplayGraph();
@@ -130,13 +233,11 @@ int main()
 				{
 					exit(1);
 				}
-					
+
+
 				}
-
-			}
-			break;
-
-
+			
+		}
 		}
 		}
 	}

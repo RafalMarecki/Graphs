@@ -24,7 +24,7 @@ public:
 
 	int get_Vertices() { return _Vertices; };
 
-	float get_Density() { return _Density; }
+	float get_Density() { return _Density; } 
 
 	virtual void DisplayGraph() = 0;
 

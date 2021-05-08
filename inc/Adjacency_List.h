@@ -11,7 +11,7 @@ private:
 	Ver_List* _adj_List;
 public:
 
-	~A_List() {};
+	~A_List() ;
 
 	A_List() : _adj_List(nullptr) {};
 
@@ -25,7 +25,7 @@ public:
 
 	virtual void DijkstraAlgoritm(std::string FileName,int Vertice, bool ifPrint, bool ifSave) override;
 
-	virtual void save_dijskra_result_to_file(std::string FileName, int* tmp_dist, int* parent) override {};
+	virtual void save_dijskra_result_to_file(std::string FileName, int* tmp_dist, int* parent) override;
 
 	void DisplayShortestPaths(int* tmp_dist, int* parent);
 

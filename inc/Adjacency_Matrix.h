@@ -12,15 +12,12 @@ private:
 	int** _adj_matrix;
 public:
 
-
+	~A_Matrix();
 
 	A_Matrix(): _adj_matrix(nullptr) {};
 
-	A_Matrix(const A_Matrix& new_matrix)
-	{
-		_adj_matrix = new_matrix._adj_matrix;
-	}
-
+	A_Matrix(const A_Matrix& new_matrix) { _adj_matrix = new_matrix._adj_matrix; };
+	
 	A_Matrix(const int& Vertices, const float& Density);
 
 	int** get_matrix() { return _adj_matrix; };
