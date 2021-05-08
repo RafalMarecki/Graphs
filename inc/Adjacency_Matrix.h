@@ -38,6 +38,10 @@ public:
 
 	int getNearest(int* tmp_dist, bool* visited);
 
+	void Reset();
+
+
+
 };
 
 

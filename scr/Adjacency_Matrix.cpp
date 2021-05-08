@@ -8,13 +8,9 @@ A_Matrix::~A_Matrix()
 	int Size = get_Vertices();
 
 	for (int i = 0; i < Size; i++)
-	{
 		delete[] _adj_matrix[i];
-	}
-
 
 	delete[]  _adj_matrix;
-
 
 }
 
@@ -33,6 +29,18 @@ A_Matrix::A_Matrix(const int& Vertices, const float& Density): Graph(Vertices, D
 			_adj_matrix[j][i] = HIGH;
 	}
 };
+
+
+void A_Matrix::Reset()
+{
+	int Size = get_Vertices();
+
+	for (int j = 0; j < Size; j++)
+	{
+		for (int i = 0; i < Size; i++)
+			_adj_matrix[j][i] = HIGH;
+	}
+}
 
 
 

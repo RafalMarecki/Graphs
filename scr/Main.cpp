@@ -15,7 +15,69 @@ int main()
 	long double czas, czas1;
 	int num, num1,num3;
 	int FirstVertice;
+	int size = 300;
 
+	float tab1[4] = { 0.25, 0.5, 0.75, 1.0 };
+	double tab[1000];
+	double av=0.0;
+
+
+	for (int j = 0; j < 4; j++)
+	{
+		for (int i = 0; i < size; i++)
+		{
+			A_Matrix a_matrix(size, tab1[j]);
+			a_matrix.Get_Random_Undirected_Graph();
+			start = clock();
+			a_matrix.DijkstraAlgoritm("graph_data.txt", 0, false, false);
+			stop = clock();
+			czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+			tab[i] = czas;
+
+			a_matrix.Reset();
+		}
+
+		for (int i = 0; i < size; i++)
+		{
+			av = av + tab[i];
+		}
+
+		av = av / size;
+
+		std::cout << "Wynik œredni z uzyciem macierzy sasiedztwa dla liczby wierzcholkow "<< size <<" i gestosci "<< tab1[j] << " rowny: " <<  av << std::endl;
+
+	}
+
+
+	for (int j = 0; j < 4; j++)
+	{
+		for (int i = 0; i < size; i++)
+		{
+			A_List a_list(size, tab1[j]);
+			a_list.Get_Random_Undirected_Graph();
+			start = clock();
+			a_list.DijkstraAlgoritm("graph_data.txt", 0, false, false);
+			stop = clock();
+			czas = (double)((double)stop - (double)start) / CLOCKS_PER_SEC;
+			tab[i] = czas;
+
+			a_list.Reset();
+		}
+
+		for (int i = 0; i < size; i++)
+		{
+			av = av + tab[i];
+		}
+
+		av = av / size;
+
+		std::cout << "Wynik œredni z uzyciem listy sasiedztwa liczby wierzcholkow " << size << " i gestosci " << tab1[j] << " rowny: " << av << std::endl;
+
+	}
+	
+
+
+	/*
 	while (1)
 	{
 		std::cout << std::endl;
@@ -241,6 +303,7 @@ int main()
 		}
 		}
 	}
+	*/
 	return 0;
 }
 

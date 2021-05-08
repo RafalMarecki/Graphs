@@ -33,6 +33,8 @@ public:
 
 	void DisplaySingleList(const int& Vertice);
 
+	void Reset() ;
+
 };
 
 

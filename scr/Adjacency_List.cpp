@@ -9,8 +9,7 @@
 
 		for (int i = 0; i < Vertices; i++)
 			_adj_List[i].DeleteVertList();
-
-		_adj_List->DeleteVertList();
+		
 	}
 
 
@@ -26,6 +25,19 @@
 					_adj_List[i].AddVertice(j, HIGH);
 			}
 	};
+
+	void A_List::Reset()
+	{
+		int Size = get_Vertices();
+
+		for (int i = 0; i < Size; i++)
+		{
+			for (int j = 0; j < Size; j++)
+				_adj_List[i].AddVertice(j, HIGH);
+		}
+	}
+
+
 
 	 void A_List::Get_Random_Undirected_Graph()
 		{
